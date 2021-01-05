@@ -4,15 +4,26 @@ import './styles/index.css'
 import App from './components/App'
 import reportWebVitals from './reportWebVitals'
 import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client'
+import { setContext } from '@apollo/client/link/context'
+import { BrowserRouter } from 'react-router-dom'
 
 const httpLink = createHttpLink({ uri: 'http://localhost:4000' })
+const authLink = setContext((_, { headers }) => {
+  const token =
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImlhdCI6MTYwOTgxMjM4M30.PJfSKyPYgaNZpzXytESN5mkgZQV8crju_Oaw7yjgFiA'
+  return {
+    headers: { ...headers, authorization: token && `Bearer ${token}` }
+  }
+})
 
-const client = new ApolloClient({ link: httpLink, cache: new InMemoryCache() })
+const client = new ApolloClient({ link: authLink.concat(httpLink), cache: new InMemoryCache() })
 
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
