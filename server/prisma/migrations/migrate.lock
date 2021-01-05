@@ -1,0 +1,5 @@
+# Prisma Migrate lockfile v1
+
+20201125185150-init
+20210105021410-change-id
+20210105021911-back-to-default

@@ -1,0 +1,83 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateField",
+      "model": "Link",
+      "field": "id",
+      "type": "String"
+    },
+    {
+      "tag": "UpdateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Link",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "newValue": "cuid()"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Link",
+      "field": "postedById",
+      "type": "String"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "User",
+      "field": "id",
+      "type": "String"
+    },
+    {
+      "tag": "UpdateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "User",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "newValue": "cuid()"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Vote",
+      "field": "id",
+      "type": "String"
+    },
+    {
+      "tag": "UpdateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Vote",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "newValue": "cuid()"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Vote",
+      "field": "linkId",
+      "type": "String"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Vote",
+      "field": "userId",
+      "type": "String"
+    }
+  ]
+}
